@@ -1,0 +1,2 @@
+ - import_tasks: esxi-disable-3dgraphics.yml
+   tags: esxi-disable-3dgraphics

@@ -1,0 +1,13 @@
+- name: Create blacklist
+  copy:
+    content: |
+      blacklist drm
+      blacklist ttm
+      blacklist drm_kms_helper
+      blacklist vmwgfx
+    dest: /etc/modprobe.d/esxi-disable-3dgraphics.conf
+  register: esxi_disable_3dgraphics
+
+- name: Update initramfs
+  shell: update-initramfs -u
+  when: esxi_disable_3dgraphics is changed
